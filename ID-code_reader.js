@@ -24,7 +24,7 @@ const birthDate = (id) => {
         case 5 || 6:
             return `${day}.${month}.20${year}`;
         default:
-            return `${day}.${month}.18${year}`;
+            return `${day}.${month}.17${year}`;
 
     }
 }
