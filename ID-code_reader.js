@@ -11,7 +11,6 @@ const sex = (id) => {
 }
 
 const birthDate = (id) => {
-    console.log(id);
     const censure = id[0];
     const year = id.slice(1, 3);
     const month = id.slice(3, 5);
@@ -65,10 +64,78 @@ const birthPlace = (id) => {
     }
 }
 
+const birthNumber = (id) => {
+    const register = Number(id.slice(7, 10));
+    let temp = 0
+    let gap = 0
+    switch (true) {
+        case register <= 10:
+            gap = 10
+            temp = 10 - register;
+            return gap - temp;
+        case register <= 19:
+            gap = 19 - 10
+            temp = 19 - register;
+            return gap - temp;
+        case register <= 150:
+            gap = 150 - 19
+            temp = 150 - register;
+            return gap - temp;
+        case register <= 160:
+            gap = 160 - 150
+            temp = 160 - register;
+            return gap - temp;
+        case register <= 220:
+            gap = 220 - 160
+            temp = 220 - register;
+            return gap - temp;
+        case register <= 270:
+            gap = 270 - 220
+            temp = 270 - register;
+            return gap - temp;
+        case register <= 370:
+            gap = 370 - 270
+            temp = 370 - register;
+            return gap - temp;
+        case register <= 420:
+            gap = 420 - 370
+            temp = 420 - register;
+            return gap - temp;
+        case register <= 470:
+            gap = 470 - 420
+            temp = 470 - register;
+            return gap - temp;
+        case register <= 490:
+            gap = 490 - 470
+            temp = 490 - register;
+            return gap - temp;
+        case register <= 520:
+            gap = 520 - 490
+            temp = 520 - register;
+            return gap - temp;
+        case register <= 570:
+            gap = 570 - 520
+            temp = 570 - register;
+            return gap - temp;
+        case register <= 600:
+            gap = 600 - 570
+            temp = 600 - register;
+            return gap - temp;
+        case register <= 650:
+            gap = 650 - 600
+            temp = 650 - register;
+            return gap - temp;
+        case register <= 700:
+            gap = 700 - 650
+            temp = 700 - register;
+            return gap - temp;
+    }
+}
+
 if (id.length === 11) {
     console.log(`Sa oled ${sex(id)}.`)
     console.log(`Sa sündisid ${birthDate(id)}.`)
-    console.log(`Sa olid ${id.slice(9, 10)}. inimene, kes sündis sel päeval ${birthPlace(id)}.`)
+    console.log(`Sa olid ${birthNumber(id)}. inimene, kes sündis sel päeval ${birthPlace(id)}.`)
     console.log(`Sinu kontrollnumber on ${id.slice(10, 11)}.`)
 } else {
     console.log('Sinu sisestatud isikukood ei vasta nõuetel');
