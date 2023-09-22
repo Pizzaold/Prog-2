@@ -132,11 +132,35 @@ const birthNumber = (id) => {
     }
 }
 
+const controlNumber = (id) => {
+    const first_array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1];
+    const second_array = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3];
+    let id_array = []
+    for (let i = 0; i < 10; i++) {
+        id_array.push(Number(id[i]));
+    }
+    console.log(id_array); 
+    let control = 0;
+    for (let i = 0; i < 10; i++) {
+        control += id_array[i] * first_array[i];
+    }
+    console.log(control);
+    if (control % 11 === 10) {
+        control = 0;
+        for (let i = 0; i < 10; i++) {
+            control += id_array[i] * second_array[i];
+        }
+        return control % 11;
+    } else {
+        return control % 11;
+    }
+}
+
 if (id.length === 11) {
     console.log(`Sa oled ${sex(id)}.`)
     console.log(`Sa sündisid ${birthDate(id)}.`)
     console.log(`Sa olid ${birthNumber(id)}. inimene, kes sündis sel päeval ${birthPlace(id)}.`)
-    console.log(`Sinu kontrollnumber on ${id.slice(10, 11)}.`)
+    console.log(`Sinu kontrollnumber on ${controlNumber(id)}.`)
 } else {
     console.log('Sinu sisestatud isikukood ei vasta nõuetel');
 }
