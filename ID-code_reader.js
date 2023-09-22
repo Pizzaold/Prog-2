@@ -16,11 +16,14 @@ const birthDate = (id) => {
     const month = id.slice(3, 5);
     const day = id.slice(5, 7);
     switch (Number(censure)) {
-        case 1 || 2:
+        case 1:
+        case 2:
             return `${day}.${month}.18${year}`;
-        case 3 || 4:
+        case 3:
+        case 4:
             return `${day}.${month}.19${year}`;
-        case 5 || 6:
+        case 5:
+        case 6:
             return `${day}.${month}.20${year}`;
         default:
             return `${day}.${month}.17${year}`;
@@ -78,7 +81,7 @@ const birthNumber = (id) => {
             temp = 19 - register;
             return gap - temp;
         case register <= 150:
-            gap = 150 - 19
+            gap = 150 - 20
             temp = 150 - register;
             return gap - temp;
         case register <= 160:
