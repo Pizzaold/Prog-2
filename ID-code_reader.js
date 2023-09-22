@@ -139,12 +139,10 @@ const controlNumber = (id) => {
     for (let i = 0; i < 10; i++) {
         id_array.push(Number(id[i]));
     }
-    console.log(id_array); 
     let control = 0;
     for (let i = 0; i < 10; i++) {
         control += id_array[i] * first_array[i];
     }
-    console.log(control);
     if (control % 11 === 10) {
         control = 0;
         for (let i = 0; i < 10; i++) {
