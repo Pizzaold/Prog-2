@@ -1,7 +1,3 @@
-const prompt = require('prompt-sync')();
-
-const id = prompt('Sisesta oma isikukood: ');
-
 const sex = (id) => {
     if (id[0] % 2 === 0) {
         return 'Naine'
@@ -12,6 +8,7 @@ const sex = (id) => {
 
 const birthDate = (id) => {
     const censure = id[0];
+    console.log(typeof id);
     const year = id.slice(1, 3);
     const month = id.slice(3, 5);
     const day = id.slice(5, 7);
@@ -157,11 +154,25 @@ const controlNumber = (id) => {
     }
 }
 
-if (id.length === 11) {
-    console.log(`Sa oled ${sex(id)}.`)
-    console.log(`Sa sündisid ${birthDate(id)}.`)
-    console.log(`Sa olid ${birthNumber(id)}. inimene, kes sündis sel päeval ${birthPlace(id)}.`)
-    console.log(`Sinu kontrollnumber on ${controlNumber(id)}.`)
-} else {
-    console.log('Sinu sisestatud isikukood ei vasta nõuetel');
-}
+
+let button = document.getElementById('button');
+const input = document.getElementById('id-code');
+const div = document.getElementById('output');
+
+button.addEventListener('click', function () {
+    id = input.value;
+        if (input.value.length === 11) {
+            div.innerHTML += `<p>Sa oled ${sex(id)}.</p><br>`;
+            div.innerHTML += `<p>Sa sündisid ${birthDate(id)}.</p><br>`;
+            div.innerHTML += `<p>Sa olid ${birthNumber(id)}. inimene, kes sündis sel päeval ${birthPlace(id)}.</p><br>`;
+            div.innerHTML += `<p>Sinu kontrollnumber on ${controlNumber(id)}.</p><br>`;
+            console.log(`Sa oled ${sex(id)}.`)
+            console.log(`Sa sündisid ${birthDate(id)}.`)
+            console.log(`Sa olid ${birthNumber(id)}. inimene, kes sündis sel päeval ${birthPlace(id)}.`)
+            console.log(`Sinu kontrollnumber on ${controlNumber(id)}.`)
+        } else {
+            div.innerHTML += '<p>Sinu sisestatud isikukood ei vasta nõuetel</p><br>';
+            console.log('Sinu sisestatud isikukood ei vasta nõuetel');
+        }
+    
+});
