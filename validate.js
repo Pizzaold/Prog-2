@@ -8,7 +8,6 @@ const sex = (id) => {
 
 const birthDate = (id) => {
     const censure = id[0];
-    console.log(typeof id);
     const year = id.slice(1, 3);
     const month = id.slice(3, 5);
     const day = id.slice(5, 7);
@@ -154,26 +153,53 @@ const controlNumber = (id) => {
     }
 }
 
+const idOutput = (idcode) => {
+    if (idcode.length !== 11) {
+        return `
+        <head>
+            <title>Isikoodi valideerimine</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        </head>
+        <body>
+            <div class="container">
+            <h2>Isikoodi valideerimine</h2>
 
-let button = document.getElementById('button');
-const input = document.getElementById('id-code');
-const div = document.getElementById('output');
+        Sinu sisestatud isikukood ei vasta nõuetel.
+        <br>
+        <br>
+        <a href="/">Valideeri uus isikukood</a>
+        </div>
+    </body>
+    </html>
+        `
+    } else {
+        return `
+            <head>
+                <title>Isikoodi valideerimine</title>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            </head>
+            <body>
+                <div class="container">
+                <h2>Isikoodi valideerimine</h2>
 
-button.addEventListener('click', function () {
-    id = input.value;
-    div.innerHTML = '';
-        if (input.value.length === 11) {
-            div.innerHTML += `<p>Sa oled ${sex(id)}.</p><br>`;
-            div.innerHTML += `<p>Sa sündisid ${birthDate(id)}.</p><br>`;
-            div.innerHTML += `<p>Sa olid ${birthNumber(id)}. inimene, kes sündis sel päeval ${birthPlace(id)}.</p><br>`;
-            div.innerHTML += `<p>Sinu kontrollnumber on ${controlNumber(id)}.</p><br>`;
-            console.log(`Sa oled ${sex(id)}.`)
-            console.log(`Sa sündisid ${birthDate(id)}.`)
-            console.log(`Sa olid ${birthNumber(id)}. inimene, kes sündis sel päeval ${birthPlace(id)}.`)
-            console.log(`Sinu kontrollnumber on ${controlNumber(id)}.`)
-        } else {
-            div.innerHTML += '<p>Sinu sisestatud isikukood ei vasta nõuetel</p><br>';
-            console.log('Sinu sisestatud isikukood ei vasta nõuetel');
-        }
-    
-});
+            Isik isikukoodiga ${idcode} on ${sex(idcode)}, kes on sündinud ${birthDate(idcode)}. <br>
+            Tema isikukood registreeriti ${birthPlace(idcode)} osakonnas ja sel päeval oli ta ${birthNumber(idcode)} isik, kes kündis sal. <br>
+            Isikukoodi kontrollnumbriks on ${controlNumber(idcode)}. <br>
+            <br>
+            <br>
+            <a href="/">Valideeri uus isikukood</a>
+            </div>
+        </body>
+        </html>
+            `
+    }
+
+}
+
+module.exports = {
+    idOutput
+}
